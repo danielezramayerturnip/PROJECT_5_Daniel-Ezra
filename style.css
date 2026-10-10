@@ -1,0 +1,311 @@
+:root {
+    --bg: #f4f6fa;
+    --card: #ffffff;
+    --text: #374151;
+    --heading: #0f172a;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --side: #1e2639;
+    --side-text: #e2e8f0;
+    --accent: #4da3ff;
+    --code-bg: #0f172a;
+    --code-text: #7dd3fc;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+}
+
+/* ---------- Sidebar ---------- */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 316px;
+    height: 100%;
+    background: var(--side);
+    overflow-y: auto;
+    z-index: 10;
+}
+
+#navbar header {
+    padding: 28px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-link {
+    display: block;
+    padding: 15px 28px;
+    color: var(--side-text);
+    text-decoration: none;
+    border-left: 4px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.nav-link:hover { background: rgba(255, 255, 255, 0.06); }
+
+.nav-link.active {
+    color: #fff;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.08);
+    border-left-color: var(--accent);
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+}
+
+/* ---------- Konten ---------- */
+#main-doc {
+    margin-left: 316px;
+    padding: 48px;
+}
+
+.main-section {
+    max-width: 1000px;
+    margin: 0 auto 40px;
+    padding: 36px;
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    scroll-margin-top: 24px;
+}
+
+/* Warna aksen per game */
+#Minecraft     { --game: #4caf50; --game-soft: #eaf6ea; }
+#Clash_of_Clans { --game: #e8a317; --game-soft: #fdf4de; }
+#Clash_Royale  { --game: #2f7de1; --game-soft: #e8f1fc; }
+#Brawl_Stars   { --game: #8b5cf6; --game-soft: #f0eafe; }
+
+.main-section > header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--game);
+}
+
+.main-section > header img {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.main-section > header span {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--heading);
+}
+
+article h3 {
+    margin: 32px 0 10px;
+    font-size: 1.25rem;
+    color: var(--heading);
+}
+
+article p { margin: 0 0 14px; }
+
+ul, ol { padding-left: 24px; margin: 0 0 14px; }
+li { margin-bottom: 6px; }
+li::marker { color: var(--game); }
+
+/* ---------- Kode ---------- */
+code {
+    padding: 2px 7px;
+    font-family: "Fira Code", Consolas, "Courier New", monospace;
+    font-size: 0.88em;
+    color: var(--code-text);
+    background: var(--code-bg);
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+/* ---------- Tabel ---------- */
+.table-wrap {
+    margin: 14px 0 20px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 11px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+th {
+    background: var(--game-soft);
+    color: var(--heading);
+    font-weight: 700;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+/* ---------- Callout ---------- */
+.callout {
+    margin: 20px 0;
+    padding: 14px 18px;
+    border-left: 5px solid var(--game);
+    border-radius: 0 10px 10px 0;
+    background: var(--game-soft);
+}
+
+.callout strong {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--heading);
+}
+
+.callout.warn {
+    border-left-color: #e5484d;
+    background: #fdecec;
+}
+
+/* ---------- Responsif ---------- */
+@media (max-width: 800px) {
+    #navbar {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    #navbar header { padding: 18px 20px; }
+    .nav-link { padding: 12px 20px; }
+
+    #main-doc {
+        margin-left: 0;
+        padding: 20px 14px;
+    }
+
+    .main-section { padding: 22px 18px; }
+    .main-section > header span { font-size: 1.7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .nav-link { transition: none; }
+}
+
+/* ---------- Galeri foto ---------- */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0 0 16px;
+    list-style: none;
+}
+
+.chips li {
+    margin: 0;
+    padding: 4px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--heading);
+    background: var(--game-soft);
+    border: 1px solid var(--game);
+    border-radius: 999px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.game-photo {
+    margin: 0;
+    overflow: hidden;
+    background: var(--code-bg);
+    border-radius: 12px;
+    border-top: 4px solid var(--game);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18);
+}
+
+.game-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+}
+
+.game-photo.portrait img {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 0;
+}
+
+/* Fokus ke bagian penting di screenshot potret */
+.game-photo img[src$="cr-profil.jpg"] { object-position: 50% 74%; }
+.game-photo img[src$="cr-klan.jpg"]   { object-position: 50% 41%; }
+
+.game-photo figcaption {
+    padding: 10px 14px 12px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #cbd5e1;
+}
+
+/* ---------- Pratinjau gambar ---------- */
+#lightbox {
+    max-width: min(92vw, 1100px);
+    max-height: 92vh;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    overflow: visible;
+}
+
+#lightbox::backdrop { background: rgba(8, 12, 24, 0.85); }
+
+#lightbox img {
+    display: block;
+    max-width: 100%;
+    max-height: 88vh;
+    margin: 0 auto;
+    border-radius: 12px;
+}
+
+#lightbox button {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 38px;
+    height: 38px;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #fff;
+    background: #e5484d;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .photo-grid { grid-template-columns: 1fr; }
+    #lightbox button { top: 6px; right: 6px; }
+}
